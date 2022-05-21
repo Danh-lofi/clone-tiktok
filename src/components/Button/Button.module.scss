@@ -1,6 +1,7 @@
 .wrapper{
     font-size: 1.6rem;
-    font-weight: 700;
+    font-weight: 600;
+    font-family: ProximaNova, sans-serif;
     padding: 9px 12px;
     border-radius:4px;
     min-width: 100px;
@@ -89,4 +90,10 @@
 
 .separate{
         border-top: 1px solid rgba(22, 24, 35, 0.12);
+}
+
+.btn-icon {
+    background-color: transparent;
+    margin-left: 22px;
+    cursor: pointer;
 }

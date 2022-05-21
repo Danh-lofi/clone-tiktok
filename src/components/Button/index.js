@@ -15,6 +15,7 @@ function Button({
   small,
   large,
   lefticon,
+  btnIcon,
   separate,
   ...passProps
 }) {
@@ -30,7 +31,7 @@ function Button({
     Comp = "a";
     props.href = href;
   }
-  const classes = cx("wrapper", {
+  const classes = cx(!btnIcon ? "wrapper" : "btn-icon", {
     [className]: className,
     separate,
     primary,

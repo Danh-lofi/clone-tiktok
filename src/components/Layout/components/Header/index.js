@@ -25,6 +25,8 @@ import images from "~/assests/images";
 import Button from "~/components/Button";
 import Menu from "~/components/Popper/Menu";
 import { faMessage, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
+import { InboxIcon, MessageIcon } from "~/components/Icons";
+import Image from "~/components/Image";
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -138,23 +140,28 @@ function Header() {
               </Button>
               {/* Tippy Message */}
               <Tippy placement="bottom" content="Message">
-                <button className={cx("btn-icon")}>
-                  <FontAwesomeIcon className={cx("icon")} icon={faPaperPlane} />
+                <button className={cx("bg-trans")}>
+                  <Button to="/message" btnIcon>
+                    <MessageIcon />
+                  </Button>
                 </button>
               </Tippy>
               {/* Tippy Inbox */}
               <Tippy placement="bottom" content="Inbox">
-                <button className={cx("btn-icon")}>
-                  <FontAwesomeIcon className={cx("icon")} icon={faMessage} />
+                <button className={cx("bg-trans")}>
+                  <Button to="/inbox" btnIcon>
+                    <InboxIcon />
+                  </Button>
                 </button>
               </Tippy>
 
               <Menu items={MENU_LOGIN} onChange={changeMenuItemHandler}>
-                <button className={cx("menu-more")}>
-                  <img
+                <button className={cx("btn-icon")}>
+                  <Image
                     className={cx("img")}
-                    src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-aiso/557695794d1cb0b4a32322da33aac45d~c5_300x300.webp?x-expires=1653094800&x-signature=9NHR7C8iW2thmS%2B2OtrxG%2BTDcjg%3D"
+                    src="https://p1-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-aiso/557695794d1cb0b4a32322da33aac45d~c5_300x300.webp?x-expires=1653094800&x-signature=9NHR7C8iW2thmS%2B2OtrxG%2BTDcjg%3D"
                     alt="img"
+                    fallback="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-aiso/557695794d1cb0b4a32322da33aac45d~c5_300x300.webp?x-expires=1653094800&x-signature=9NHR7C8iW2thmS%2B2OtrxG%2BTDcjg%3D"
                   />
                 </button>
               </Menu>
