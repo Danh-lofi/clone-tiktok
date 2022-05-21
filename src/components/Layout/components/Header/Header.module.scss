@@ -14,80 +14,8 @@
     align-items: center;
     justify-content: space-between;
 }
-
-.search{
-    position: relative;
-    display: flex;
-    width: 361px;
-    height: 46px;
-    background-color: rgba(22, 24, 35, 0.06);
-    border-radius: var(--search-border-radius);
-    padding-left: 16px;
-    border: 1.5px solid transparent;
-    input{
-        flex: 1;
-        height: 100%;
-        color: var(--black);
-        font-size:1.6rem;
-        border: none;
-        outline: none;
-        background-color:transparent;
-        caret-color: red;
-    }
-    input:not(:placeholder-shown) ~ .search-btn{
-        color: rgba(22, 24, 35, 0.75);
-    }
-    &::after{
-        content: "";
-        position: absolute;
-        top: 9px;
-        right: 52px;
-        height:28px;
-        width: 1px;
-        background-color:rgba(22, 24, 35, 0.12);
-
-    }
-    &:focus-within{
-        border: 1.5px solid rgba(22, 24, 35, 0.2);
-    }
-}
-
-.search-results-title{
-    font-size:1.6rem;
-    color: rgba(22, 24, 35, 0.5);
-    font-weight: 600;
-    padding: 12px 15px;
-}
-
-.clear,
-.loading{
-    position: absolute;
-    color: rgba(22, 24, 35, 0.34);
-    top: 50%;
-    transform: translateY(-50%);
-    font-size:1.6rem;
-    right: 66px;
-}
-.search-btn{
-    font-size: 1.8rem;
-    color: rgba(22, 24, 35, 0.34);
-    width: 52px;
-    height: 100%;
-    border-top-right-radius: var(--search-border-radius);
-    border-bottom-right-radius: var(--search-border-radius);
-    &:hover{
-        background-color: rgba(22, 24, 35, 0.03);
-        cursor: pointer;
-    }
-    &:active{
-        background-color: rgba(22, 24, 35, 0.06);
-    }
-}
-
-.search-results{
-    width: 360px;
-}
-
+// Search
+// -------------------------------------------------
 .menu-more{
     margin-left: 8px;
     background-color:transparent;
@@ -96,7 +24,8 @@
     padding: 14px 16px;
     color: rgb(22, 24, 35);
 }
-
+// Actions
+// -------------------------------------------------
 .action{
     height: 100%;
     display: flex;
