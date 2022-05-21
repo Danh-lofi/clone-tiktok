@@ -1,0 +1,125 @@
+.wrapper{
+    --search-border-radius: 92px;
+    width:100%;
+    height:var(--default-layout-height-header); 
+    box-shadow: 0 1px 1px rgb(0 0 0 /12%);
+    display: flex;
+    justify-content: center;
+}
+.inner{
+    height:100%;
+    width: var(--width-layout-content);
+    padding: 0 var(--default-layout-padding-header);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search{
+    position: relative;
+    display: flex;
+    width: 361px;
+    height: 46px;
+    background-color: rgba(22, 24, 35, 0.06);
+    border-radius: var(--search-border-radius);
+    padding-left: 16px;
+    border: 1.5px solid transparent;
+    input{
+        flex: 1;
+        height: 100%;
+        color: var(--black);
+        font-size:1.6rem;
+        border: none;
+        outline: none;
+        background-color:transparent;
+        caret-color: red;
+    }
+    input:not(:placeholder-shown) ~ .search-btn{
+        color: rgba(22, 24, 35, 0.75);
+    }
+    &::after{
+        content: "";
+        position: absolute;
+        top: 9px;
+        right: 52px;
+        height:28px;
+        width: 1px;
+        background-color:rgba(22, 24, 35, 0.12);
+
+    }
+    &:focus-within{
+        border: 1.5px solid rgba(22, 24, 35, 0.2);
+    }
+}
+
+.search-results-title{
+    font-size:1.6rem;
+    color: rgba(22, 24, 35, 0.5);
+    font-weight: 600;
+    padding: 12px 15px;
+}
+
+.clear,
+.loading{
+    position: absolute;
+    color: rgba(22, 24, 35, 0.34);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size:1.6rem;
+    right: 66px;
+}
+.search-btn{
+    font-size: 1.8rem;
+    color: rgba(22, 24, 35, 0.34);
+    width: 52px;
+    height: 100%;
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
+    &:hover{
+        background-color: rgba(22, 24, 35, 0.03);
+        cursor: pointer;
+    }
+    &:active{
+        background-color: rgba(22, 24, 35, 0.06);
+    }
+}
+
+.search-results{
+    width: 360px;
+}
+
+.menu-more{
+    margin-left: 8px;
+    background-color:transparent;
+    font-size: 1.8rem;
+    cursor:pointer;
+    padding: 14px 16px;
+    color: rgb(22, 24, 35);
+}
+
+.action{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.box{
+    background-color: rgba(22, 24, 35, 0.3);
+    height: 60px;;
+    width: 60px;
+}
+.btn-icon{
+    background-color: transparent;
+    margin-left: 22px;
+    cursor: pointer;
+}
+.icon{
+    font-size: 1.8rem;
+}
+.img{
+    margin-left: 22px;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+    border-radius: 50%;
+    object-fit: cover;
+}

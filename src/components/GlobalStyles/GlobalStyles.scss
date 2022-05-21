@@ -1,0 +1,51 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,500;1,700&display=swap');
+:root{
+    --primary: rgba(254, 44, 85, 1.0);
+    --black: #000;
+    --text-color:#333;
+    --white: #fff;
+
+    --default-layout-height-header:60px;
+    --default-layout-padding-header: 24px;
+    --width-layout-content: 1150px;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-family: 'Roboto, sans-serif';
+    font-size:1.6rem;
+    line-height: 1.5;
+    text-rendering: optimize;
+    .tippy-box{
+        background-color: rgba(84, 84, 84, 0.92);
+        padding:8px;
+        font-size: 1.6rem;
+        font-weight:600;
+        border-color: rgba(84, 84, 84, 0.92);
+    }
+    .tippy-arrow{
+        color:rgba(84, 84, 84, 0.92);
+        z-index:999;
+        top: -1;
+    }
+}
+
+button,input,[tabindex]{
+    outline:none;
+    border:none;
+}
+
+a[href]{
+    text-decoration:none;
+    color: var(--text-color);
+}
