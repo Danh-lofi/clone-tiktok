@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleXmark,
   faMagnifyingGlass,
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 
 import HeadlessTippy from "@tippyjs/react/headless";
@@ -16,17 +17,37 @@ function Search() {
   const [searchResult, setSearchResult] = useState([]);
   const [valueSearch, setValueSearch] = useState("");
   const [showResult, setShowResult] = useState(true);
+  const [loading, setLoading] = useState(false);
   const inputRef = useRef();
   useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([1, 2, 3]);
-    }, 0);
-  });
+    if (valueSearch.trim() === "") {
+      setSearchResult([]);
+      return;
+    }
+    fetch(
+      `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
+        valueSearch
+      )}&type=less`
+    )
+      .then((response) => {
+        setLoading(true);
+        return response.json();
+      })
+      .then((data) => {
+        setLoading(false);
+        return setSearchResult(data.data);
+      })
+      .catch(() => setLoading(false));
+  }, [valueSearch]);
 
   const changeValueHandler = (e) => {
-    setValueSearch(e.target.value);
+    if (e.target.value[0] === " ") {
+      setLoading(false);
+      setValueSearch("");
+    } else setValueSearch(e.target.value);
   };
   const clearValueHandler = () => {
+    setLoading(false);
     setValueSearch("");
     inputRef.current.focus();
     setShowResult(false);
@@ -40,10 +61,8 @@ function Search() {
         <div className={cx("search-results")} tabIndex="-1" {...attrs}>
           <PopperWrapper>
             <h4 className={cx("search-results-title")}>Accounts</h4>
-            <ItemAccount />
-            <ItemAccount />
-            <ItemAccount />
-            <ItemAccount />
+            {searchResult &&
+              searchResult.map((account) => <ItemAccount data={account} />)}
           </PopperWrapper>
         </div>
       )}
@@ -56,13 +75,14 @@ function Search() {
           onChange={changeValueHandler}
           onFocus={() => setShowResult(true)}
         />
-        {!!valueSearch && (
+        {!!valueSearch && !loading && (
           <button className={cx("clear")} onClick={clearValueHandler}>
             <FontAwesomeIcon icon={faCircleXmark} />
           </button>
         )}
-        {/* <FontAwesomeIcon className={cx("loading")} icon={faSpinner} /> */}
-
+        {loading && (
+          <FontAwesomeIcon className={cx("loading")} icon={faSpinner} />
+        )}
         <button className={cx("search-btn")}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
