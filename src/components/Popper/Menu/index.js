@@ -48,7 +48,7 @@ function Menu({ children, items = [], onChange }) {
             {history.length > 1 && (
               <Header title="Language" onBack={backToMenuHandler} />
             )}
-            {renderItems()}
+            <div className={cx("container-menuItem")}> {renderItems()}</div>
           </PopperWrapper>
         </div>
       )}
