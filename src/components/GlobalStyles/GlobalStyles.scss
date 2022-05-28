@@ -5,7 +5,7 @@
     --black: #000;
     --text-color:#333;
     --white: #fff;
-
+    --font-family: 'ProximaNova';
     --default-layout-height-header:60px;
     --default-layout-padding-header: 24px;
     --width-layout-content: 1150px;
@@ -22,7 +22,7 @@ html{
 }
 
 body{
-    font-family: 'ProximaNova, sans-serif';
+    font-family: var(--font-family);
     font-size:1.6rem;
     line-height: 1.5;
     text-rendering: optimize;

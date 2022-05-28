@@ -14,6 +14,7 @@ import { Wrapper as PopperWrapper } from "~/components/Popper";
 import ItemAccount from "~/components/ItemAccount";
 import classNames from "classnames/bind";
 import styles from "./Search.module.scss";
+import { Link } from "react-router-dom";
 const cx = classNames.bind(styles);
 
 function Search() {
@@ -101,9 +102,14 @@ function Search() {
         {loading && (
           <FontAwesomeIcon className={cx("loading")} icon={faSpinner} />
         )}
-        <button className={cx("search-btn")}>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </button>
+        <Link to="/search">
+          <button
+            className={cx("search-btn")}
+            onMouseDown={(e) => e.preventDefault}
+          >
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
+        </Link>
       </div>
     </HeadlessTippy>
   );

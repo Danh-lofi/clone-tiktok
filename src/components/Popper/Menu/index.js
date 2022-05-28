@@ -38,6 +38,7 @@ function Menu({ children, items = [], onChange }) {
     <Tippy
       offset={[12, 8]}
       interactive
+      hideOnClick="false"
       delay={[0, 500]}
       placement="bottom-end"
       onHide={() => setHistory((prev) => prev.slice(0, 1))}
