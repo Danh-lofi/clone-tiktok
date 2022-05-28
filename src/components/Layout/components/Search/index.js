@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+import { useDebounce } from "~/hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleXmark,
   faMagnifyingGlass,
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
+
+import search from "~/apiService/searchService";
 
 import HeadlessTippy from "@tippyjs/react/headless";
 import { Wrapper as PopperWrapper } from "~/components/Popper";
@@ -18,33 +21,48 @@ function Search() {
   const [valueSearch, setValueSearch] = useState("");
   const [showResult, setShowResult] = useState(true);
   const [loading, setLoading] = useState(false);
+  const debouced = useDebounce(valueSearch, 500);
   const inputRef = useRef();
   useEffect(() => {
-    if (valueSearch.trim() === "") {
+    if (debouced.trim() === "") {
+      setLoading(false);
       setSearchResult([]);
       return;
     }
-    fetch(
-      `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-        valueSearch
-      )}&type=less`
-    )
-      .then((response) => {
-        setLoading(true);
-        return response.json();
-      })
-      .then((data) => {
-        setLoading(false);
-        return setSearchResult(data.data);
-      })
-      .catch(() => setLoading(false));
-  }, [valueSearch]);
+    // fetch(
+    //   `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
+    //     valueSearch
+    //   )}&type=less`
+    // )
+    //   .then((response) => {
+    //     setLoading(true);
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     setLoading(false);
+    //     return setSearchResult(data.data);
+    //   })
+    //   .catch(() => setLoading(false));
+
+    const fetchAPI = async () => {
+      setLoading(true);
+
+      const result = await search(debouced);
+      setSearchResult(result);
+
+      setLoading(false);
+    };
+    fetchAPI();
+  }, [debouced]);
 
   const changeValueHandler = (e) => {
     if (e.target.value[0] === " ") {
       setLoading(false);
       setValueSearch("");
-    } else setValueSearch(e.target.value);
+    } else {
+      setLoading(true);
+      setValueSearch(e.target.value);
+    }
   };
   const clearValueHandler = () => {
     setLoading(false);
