@@ -3,28 +3,28 @@ import Following from "~/Pages/Following";
 import Profile from "~/Pages/Profile";
 import Upload from "~/Pages/Upload";
 import Search from "~/Pages/Search";
-import { HeaderOnly } from "~/components/Layout";
-import configRoutes from "~/config/configRoutes";
+import { HeaderOnly } from "~/layouts";
+import config from "~/config";
 const publicRoutes = [
   {
-    path: configRoutes.home,
+    path: config.configRoutes.home,
     component: Home,
   },
   {
-    path: configRoutes.following,
+    path: config.configRoutes.following,
     component: Following,
   },
   {
-    path: configRoutes.profile,
+    path: config.configRoutes.profile,
     component: Profile,
   },
   {
-    path: configRoutes.upload,
+    path: config.configRoutes.upload,
     component: Upload,
     layout: HeaderOnly,
   },
   {
-    path: configRoutes.search,
+    path: config.configRoutes.search,
     component: Search,
   },
 ];
